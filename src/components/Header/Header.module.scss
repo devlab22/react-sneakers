@@ -1,0 +1,23 @@
+.mainHeader {
+    border-bottom: 1px solid #eaeaea;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    h3,
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  
+    img {
+      margin-right: 1rem;
+    }
+  
+    ul {
+      li {
+        margin-right: 2rem;
+      }
+    }
+  }
