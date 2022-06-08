@@ -1,6 +1,10 @@
 import styles from './CartItem.module.scss'
 
 function CartItem(props){
+
+    const onRemoveItem = () =>{
+        props.onRemoveItem(props.id)
+    };
     
     return(
         <div className={styles.cartItem}>
@@ -11,7 +15,7 @@ function CartItem(props){
             <p className="mb-5">{props.title}</p>
             <b>{props.price} {props.unit}</b>
         </div>
-        <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
+        <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" onClick={onRemoveItem}/>
     </div>
     )
 }

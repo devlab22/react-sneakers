@@ -8,54 +8,50 @@ const data = [
   {id:1, title: 'Nike Blazer Mid Suede', price: '120', unit: "€", imageUrl: '/img/sneakers/1.jpg' },
   {id:2, title: 'Nike Air Max 270', price: '45', unit: "€", imageUrl: '/img/sneakers/2.jpg' },
   {id:3, title: 'Nike Blazer Mid Suede', price: '35', unit: "€", imageUrl: '/img/sneakers/3.jpg' },
-  {id:4, title: 'Boku Future Rider', price: '53,99', unit: "€", imageUrl: '/img/sneakers/4.jpg' },
+  {id:4, title: 'Boku Future Rider', price: '53', unit: "€", imageUrl: '/img/sneakers/4.jpg' },
   {id:5, title: 'Nike Kyrie 7', price: '55', unit: "€", imageUrl: '/img/sneakers/5.jpg' },
   {id:6, title: 'Nike LeBrone XVIII', price: '45', unit: "€", imageUrl: '/img/sneakers/6.jpg' },
   {id:7, title: 'Puma X Aka Boku Future Rider', price: '35', unit: "€", imageUrl: '/img/sneakers/7.jpg' },
-  {id:8, title: 'Puma X Aka', price: '53,99', unit: "€", imageUrl: '/img/sneakers/8.jpg' },
+  {id:8, title: 'Puma X Aka', price: '53', unit: "€", imageUrl: '/img/sneakers/8.jpg' },
   {id:9, title: 'Nike Air Max 70', price: '35', unit: "€", imageUrl: '/img/sneakers/7.jpg' },
-  {id:10, title: 'Puma X Aka', price: '53,99', unit: "€", imageUrl: '/img/sneakers/8.jpg' }
+  {id:10, title: 'Puma X Aka', price: '53', unit: "€", imageUrl: '/img/sneakers/8.jpg' }
 ]
 
 function App() {
-
-  const [items, setItems] = useState(data);
+// https://restcountries.com/v2/all
+  const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [cartOpened, setCartOpened] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   
- /*  useEffect(() => {
+  useEffect(() => {
     async function fetchData(){
 
       try {
-        const [cartResponse] = await Promise.all([
-          axios.get('https://60d62397943aa60017768e77.mockapi.io/items')
+        const [itemsResponse, cartResponse] = await Promise.all([
+          axios.get('https://62a04d7a202ceef7086a2584.mockapi.io/items'),
+          axios.get('https://62a04d7a202ceef7086a2584.mockapi.io/cart')
         ]);
         
-        console.log(cartResponse);
-        setItems(cartResponse.data);
+        setItems(itemsResponse.data);
+        setCartItems(cartResponse.data);
+        console.log('response');
       } catch(error){
-        alert('error by response')
+        console.log('error by response');
       }
     }
 
     fetchData();
-  }) */
+  }, []);
 
- /*  useEffect(() => {
-    axios.get("https://restcountries.com/v2/all")
-      .then(response => {
-        return response.data;
-      })
-      .then(json => {
-        //setItems(json);
-        //setItems(data)
-        console.log(json)
-      });
-  }); */
+  const onAdd2Cart = (obj, added) => {
+    added ? axios.post('https://62a04d7a202ceef7086a2584.mockapi.io/cart', obj) : onRemoveItem(obj.id);
+    added ? setCartItems(prev => [...prev, obj]) : setCartItems(prev => prev.filter(item => {
 
-  const onAdd2Cart = (obj) => {
-    obj.added ? setCartItems(prev => [...prev, obj]) : setCartItems(prev => prev.filter(item => item.id !== obj.id));
+       return item.id !== obj.id 
+      }));
+
+      
   };
 
   const onAdd2Favorite = (obj) => {
@@ -66,11 +62,16 @@ function App() {
     setSearchValue(event.target.value);
   };
 
+  const onRemoveItem = (id) => {
+    axios.delete(`https://62a04d7a202ceef7086a2584.mockapi.io/cart/${id}`)
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  };
+
   return (
     <div className='wrapper clear'>
 
       {/* { cartOpened ? <CartShop  onCloseCart={() => setCartOpened(false)} /> : null } */}
-      {cartOpened && <CartShop items={cartItems} onCloseCart={() => setCartOpened(false)} />}
+      {cartOpened && <CartShop items={cartItems} onCloseCart={() => setCartOpened(false)} onRemoveItem={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
 
       <div className="content">
