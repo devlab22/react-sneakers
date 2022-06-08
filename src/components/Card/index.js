@@ -1,20 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './Card.module.scss'
 
-function Card({id, title, onClickFavorite, imageUrl, price, unit, onClickPlus}) {
+function Card({id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, added=false, favorite=false}) {
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setFavorite] = useState(false)
+    
+    useEffect(() => {
+        setIsAdded(added);
+        setFavorite(favorite);
+    }, []);
 
     const handlePlus = () => {
 
-        const added = !isAdded;
-        onClickPlus({id, title, price, unit, imageUrl}, added);
-        //isAdded ? setIsAdded(false) : setIsAdded(true);
+        onClickPlus({id, title, price, unit, imageUrl}, !isAdded);
         setIsAdded(!isAdded);
     };
 
     const handleFavorite = () => {
-        onClickFavorite({id, title, price, unit, imageUrl});
+        onClickFavorite({id, title, price, unit, imageUrl}, !isFavorite);
         setFavorite(!isFavorite);
     };
 

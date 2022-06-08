@@ -1,0 +1,72 @@
+[
+    {
+     "id": "1",
+     "title": "Nike Blazer Mid Suede",
+     "price": "120",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/1.jpg"
+    },
+    {
+     "id": "2",
+     "title": "Nike Air Max 270",
+     "price": "45",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/2.jpg"
+    },
+    {
+     "id": "3",
+     "title": "Nike Blazer Mid Suede",
+     "price": "35",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/3.jpg"
+    },
+    {
+     "id": "4",
+     "title": "Boku Future Rider",
+     "price": "53",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/4.jpg"
+    },
+    {
+     "id": "5",
+     "title": "Nike Kyrie 7",
+     "price": "55",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/5.jpg"
+    },
+    {
+     "id": "6",
+     "title": "Nike LeBrone XVIII",
+     "price": "45",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/6.jpg"
+    },
+    {
+     "id": "7",
+     "title": "Puma X Aka Boku Future Rider",
+     "price": "35",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/7.jpg"
+    },
+    {
+     "id": "8",
+     "title": "Puma X Aka",
+     "price": "53",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/8.jpg"
+    },
+    {
+     "id": "9",
+     "title": "Nike Air Max 70",
+     "price": "35",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/7.jpg"
+    },
+    {
+     "id": "10",
+     "title": "Puma X Aka",
+     "price": "53",
+     "unit": "€",
+     "imageUrl": "/img/sneakers/8.jpg"
+    }
+   ]
