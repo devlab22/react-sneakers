@@ -1,6 +1,7 @@
 import CartItem from '../CartItem'
 import styles from './CartShop.module.scss'
 import React, { useState, useEffect } from 'react';
+import { formateCurrency } from '../formatter'
 
 function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
     const tax = 20;
@@ -11,8 +12,15 @@ function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
     });
 
     useEffect(() => {
-        setAmount(price)
+        const p = formateCurrency({price:price, displayCode:false});
+        setAmount(p);
     }, [price]);
+
+    const calculateTax = () => {
+        const p = parseFloat(amount);
+        const t = p - (p / (tax / 100 +1 ));
+        return formateCurrency({price:t, displayCode:true});
+    };
 
     return (
         <div className={styles.overlay}>
@@ -50,7 +58,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
                                     <li>
                                         <span>Tax {tax}%:</span>
                                         <div></div>
-                                        <b>{amount - (amount / (tax / 100 + 1))} €</b>
+                                        <b>{calculateTax()}</b>
                                     </li>
                                 </ul>
                                 <button className={styles.greenButton}>Buy

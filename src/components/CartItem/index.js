@@ -1,7 +1,10 @@
-import styles from './CartItem.module.scss'
+import styles from './CartItem.module.scss';
+import { formateCurrency } from '../formatter';
 
 function CartItem(props){
-
+    
+    const p = formateCurrency({price:props.price, currency:props.unit, displayCode:true});
+    
     const onRemoveItem = () =>{
         props.onRemoveItem(props.id)
     };
@@ -13,7 +16,7 @@ function CartItem(props){
         </div>
         <div className="mr-20 flex">
             <p className="mb-5">{props.title}</p>
-            <b>{props.price} {props.unit}</b>
+            <b>{p}</b>
         </div>
         <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" onClick={onRemoveItem}/>
     </div>
