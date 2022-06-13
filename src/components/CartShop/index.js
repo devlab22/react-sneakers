@@ -1,7 +1,7 @@
 import CartItem from '../CartItem'
 import styles from './CartShop.module.scss'
 import React, { useState, useEffect } from 'react';
-import { formateCurrency } from '../formatter'
+import { formateCurrency } from '../formatter';
 
 function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
     const tax = 20;
