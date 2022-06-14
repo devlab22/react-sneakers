@@ -3,8 +3,8 @@ import styles from './CartShop.module.scss'
 import React, { useState, useEffect } from 'react';
 import { formateCurrency } from '../formatter';
 
-function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
-    const tax = 20;
+function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy }) {
+    const tax = 19;
     const [amount, setAmount] = useState(0)
     let price = 0;
     items.forEach(item => {
@@ -18,8 +18,12 @@ function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
 
     const calculateTax = () => {
         const p = parseFloat(amount);
-        const t = p - (p / (tax / 100 +1 ));
+        const t = p * (tax / 100 );
         return formateCurrency({price:t, displayCode:true});
+    };
+
+    const handleOnBuy = () => {
+       onBuy(items);
     };
 
     return (
@@ -61,7 +65,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [] }) {
                                         <b>{calculateTax()}</b>
                                     </li>
                                 </ul>
-                                <button className={styles.greenButton}>Buy
+                                <button className={styles.greenButton} onClick={handleOnBuy}>Buy
                                     <img src="/img/arrow.svg" alt="Arrow" />
                                 </button>
                             </div>

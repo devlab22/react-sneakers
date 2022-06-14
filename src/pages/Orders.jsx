@@ -1,23 +1,20 @@
-import { useContext } from 'react';
 import Card from '../components/Card';
-import AppContext  from '../context'
 
-function Favorite({cartItems=[], favoriteItems=[], onAdd2Cart, onAdd2Favorite}){
-    const state = useContext(AppContext);
-    //console.log(state)
+function Orders({items=[], cartItems=[], favoriteItems=[], onAdd2Cart, onAdd2Favorite}){
+
     return(
         <div className="content">
         <div className="d-flex align-center justify-between">
-          <h1>My Favorites</h1>
+          <h1>My Orders</h1>
         </div>
 
         <div className="d-flex flex-wrap">
-          {state.favoriteItems
+          {items
             .map(item => (
               <Card
                 key={item.id}
-                added={state.isItemInCart(item && item.id)}
-                favorite={true}
+                added={cartItems.some(obj => obj.id === item.id)}
+                favorite={favoriteItems.some(obj => obj.id === item.id)}
                 onClickPlus={onAdd2Cart}
                 onClickFavorite={onAdd2Favorite}
                 {...item}
@@ -29,4 +26,4 @@ function Favorite({cartItems=[], favoriteItems=[], onAdd2Cart, onAdd2Favorite}){
     )
 }
 
-export default Favorite;
+export default Orders;

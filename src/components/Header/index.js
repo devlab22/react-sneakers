@@ -36,9 +36,12 @@ function Header({ onClickCart, items = [] }) {
             <img width={18} height={18} src="/img/heart.svg" alt="heart" />
           </Link>
         </li>
-        <li>
-          <img width={18} height={18} src="/img/user.svg" alt="user" />
-        </li>
+        <Link to='/orders'>
+          <li>
+            <img width={18} height={18} src="/img/user.svg" alt="user" />
+          </li>
+        </Link>
+
       </ul>
     </header>
   )
