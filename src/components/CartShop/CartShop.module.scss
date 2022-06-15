@@ -77,6 +77,9 @@
     transform: transition 0.15s ease-in-out;
   }
 
+  &:disabled{
+    background-color: #bebebe;
+  }
   &:hover {
     background: lighten($color: #9dd558, $amount: 5%);
 

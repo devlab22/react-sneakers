@@ -12,12 +12,10 @@ function Home({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, onAd
     const filteredItems = items.filter(item => 
       item.title.toUpperCase().includes(searchValue.toUpperCase()));
 
-    return (isLoading ? [...Array(10)] : filteredItems)       
+    return (isLoading ? [...Array(15)] : filteredItems)       
       .map((item, index) => (
         <Card
           key={index}
-          added={cartItems.some(obj => obj.id === item.id)}
-          favorite={favoriteItems.some(obj => obj.id === item.id)}
           onClickPlus={onAdd2Cart}
           onClickFavorite={onAdd2Favorite}
           isLoading={isLoading}

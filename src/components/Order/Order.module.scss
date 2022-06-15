@@ -1,0 +1,44 @@
+.card {
+    border: 1px solid #f3f3f3;
+    padding: 1rem;
+    width: 220px;
+    border-radius: 40px;
+    margin: 0 1rem 1rem 0;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    overflow: auto;
+    
+    .plus{
+      cursor: pointer;
+    }
+
+    &:hover {
+      box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.076);
+      transform: translateY(-0.5rem);
+    }
+  
+    .favorite {
+      position: absolute;
+      cursor: pointer
+    }
+  
+    h5 {
+      font-weight: 400;
+      font-size: 1rem;
+    }
+  
+    b {
+      font-size: 1rem;
+  
+    }
+  
+    span {
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+  
+    p {
+      margin: 0;
+      opacity: 0.5;
+    }
+
+  }
