@@ -208,7 +208,7 @@ function App() {
             />
           }>
           </Route>
-          <Route path='/orders/order/*' element={
+          <Route path='/orders/*' element={
             <OrderDetails/>
           }>
 

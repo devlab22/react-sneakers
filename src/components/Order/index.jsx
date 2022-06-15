@@ -12,13 +12,12 @@ function Order({ orderId, items = [] }) {
     p = formateCurrency({ price: p, currency: "EUR", displayCode: true });
 
     const onOrderClick = () => {
-        setOrderId(orderId)
-        console.log('order', orderId)
+        setOrderId(orderId);
     };
 
     return (
         <div>
-            <Link to={`/orders/order/${orderId}`}>
+            <Link to={`/orders/${orderId}`}>
                 <div className={styles.card} onClick={onOrderClick}>
 
                     <h5>Order #{orderId}</h5>
