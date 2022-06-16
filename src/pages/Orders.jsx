@@ -1,7 +1,7 @@
 import Info from '../components/Info';
 import Order from '../components/Order';
 
-function Orders({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, onAdd2Favorite }) {
+function Orders({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, onAdd2Favorite, onRemoveOrder }) {
    
   return (
     <div className="content">
@@ -16,6 +16,7 @@ function Orders({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, on
               <Order
                 key={item.key}
                 orderId={item.key}
+                onRemoveOrder={onRemoveOrder}
                 {...item}
               />
             ))}

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { formateCurrency } from '../formatter'
 
-function Header({ onClickCart, items = [] }) {
+function Header({ onClickCart, items = [], favorites= [] }) {
   const [amount, setAmount] = useState(0)
   let price = 0;
   items.forEach(item => {
@@ -31,9 +31,9 @@ function Header({ onClickCart, items = [] }) {
           <img width={18} height={18} src="/img/cart.svg" alt="logo" />
           <span>{amount}</span>
         </li>
-        <li className='cu-p mr-30'>
+        <li className='cu-p mr-20'>
           <Link to="/favorites">
-            <img width={18} height={18} src="/img/heart.svg" alt="heart" />
+            <img height={24} width={24} src={ favorites.length > 0 ? "/img/heart.svg" : "/img/heart.svg"} alt="heart" />
           </Link>
         </li>
         <Link to='/orders'>

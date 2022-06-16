@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import Card from '../components/Card';
-import AppContext from '../context'
+import AppContext from '../context';
 import Info from '../components/Info';
 
 function Favorite({ cartItems = [], favoriteItems = [], onAdd2Cart, onAdd2Favorite }) {
   const state = useContext(AppContext);
-  //console.log(state)
+  
   return (
     <div className="content">
       <div className="d-flex align-center justify-between">
@@ -13,7 +13,7 @@ function Favorite({ cartItems = [], favoriteItems = [], onAdd2Cart, onAdd2Favori
       </div>
 
       {
-        state.favoriteItems.lenght > 0 ? (
+        state.favoriteItems.length > 0 ? (
           <div className="d-flex flex-wrap">
             {state.favoriteItems
               .map(item => (

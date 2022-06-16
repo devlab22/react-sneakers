@@ -1,7 +1,7 @@
 .card {
     border: 1px solid #f3f3f3;
     padding: 1rem;
-    width: 220px;
+    width: 150px;
     border-radius: 40px;
     margin: 0 1rem 1rem 0;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -23,12 +23,13 @@
   
     h5 {
       font-weight: 400;
+      margin: 0 0 0.5rem 0;
       font-size: 1rem;
     }
   
     b {
       font-size: 1rem;
-  
+      margin: 0 0 0.5rem 0;
     }
   
     span {
@@ -37,8 +38,44 @@
     }
   
     p {
-      margin: 0;
+      margin: 0 0 0.5rem 0;
       opacity: 0.5;
+    }
+
+    .greenButton {
+      width: 80px;
+      height: 25px;
+      background: #9dd558;
+      border-radius: 1rem;
+      border: 0;
+      color: #ffffff;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      position: relative;
+    
+      img {
+        position: absolute;
+        right: 2rem;
+        top: 0.9rem;
+        transform: transition 0.15s ease-in-out;
+      }
+    
+      &:disabled{
+        background-color: #bebebe;
+      }
+      &:hover {
+        background: lighten($color: #9dd558, $amount: 5%);
+    
+        img {
+          transform: translateX(0.5rem);
+        }
+      }
+    
+      &:active {
+        background: darken($color: #9dd558, $amount: 5%);
+      }
+    
     }
 
   }

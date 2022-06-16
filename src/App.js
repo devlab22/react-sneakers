@@ -9,6 +9,7 @@ import Orders from './pages/Orders';
 import AppContext from './context'
 import CiscoISE from './Api';
 import OrderDetails from './pages/OrderDetails';
+import MyDashboard from './Dashboard'
 
 /* const data = [
   {id:1, title: 'Nike Blazer Mid Suede', price: '120', unit: "€", imageUrl: '/img/sneakers/1.jpg' },
@@ -26,6 +27,7 @@ import OrderDetails from './pages/OrderDetails';
 
 //export const AppContext = React.createContext({});
 let MyCiscoIse = null;
+let MyMeraki = null;
 
 function App() {
   // https://restcountries.com/v2/all
@@ -37,11 +39,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [orderId, setOrderId] = useState('');
 
+  //const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
   useEffect(() => {
-    async function fetchData() {
 
+    async function fetchData() {
+      // console.log('fetch data')
       setIsLoading(true);
+
       try {
         const [itemsResponse, cartResponse, favoriteResponse, ordersResponse] = await Promise.all([
           axios.get('https://62a04d7a202ceef7086a2584.mockapi.io/items'),
@@ -53,7 +58,7 @@ function App() {
         setItems(itemsResponse.data);
         setCartItems(cartResponse.data);
         setFavoriteItems(favoriteResponse.data);
-        setOrderItems(ordersResponse.data);  
+        setOrderItems(ordersResponse.data);
         onLogin('iseadmin', '12345', '173.21.1');
 
       } catch (error) {
@@ -136,7 +141,7 @@ function App() {
   const onBuy = async (items = []) => {
 
     try {
-      const { data } = await axios.post(`https://62a04d7a202ceef7086a2584.mockapi.io/orders/`, {items: items});
+      const { data } = await axios.post(`https://62a04d7a202ceef7086a2584.mockapi.io/orders/`, { items: items });
       console.log(data)
       setOrderId(data.key)
       setOrderItems(prev => [...prev, data]);
@@ -158,6 +163,11 @@ function App() {
       //console.log(MyCiscoIse.getHeader());
     }
 
+    if (MyMeraki === null){
+      MyMeraki = new MyDashboard('9c990e550487dcfdcfe02e65b40f77035bd45d86');
+      MyMeraki.getOrganizations(); 
+    }
+
   }
 
   const isItemInCart = (id) => {
@@ -172,12 +182,27 @@ function App() {
     setCartOpened(false);
   };
 
+  const onRemoveOrder = async (orderId) => {
+
+    try {
+      await axios.delete(`https://62a04d7a202ceef7086a2584.mockapi.io/orders/${orderId}`);
+      setOrderItems(prev => prev.filter(item => Number(item.key) !== Number(orderId)));
+    }
+    catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
+
   return (
-    <AppContext.Provider value={{ items, cartItems, favoriteItems, orderItems, setOrderId, isItemInCart, isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite }}>
+    <AppContext.Provider value={{
+      items, cartItems, favoriteItems, orderItems, setOrderId, isItemInCart,
+      isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite
+    }}>
       <div className='wrapper clear'>
 
         {cartOpened && <CartShop items={cartItems} onCloseCart={onCloseCart} onRemoveItem={onRemoveItem} onBuy={onBuy} />}
-        <Header onClickCart={() => setCartOpened(true)} items={cartItems} />
+        <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} />
 
         <Routes>
           <Route path="/" exact element={
@@ -205,11 +230,12 @@ function App() {
               favoriteItems={favoriteItems}
               onAdd2Cart={onAdd2Cart}
               onAdd2Favorite={onAdd2Favorite}
+              onRemoveOrder={onRemoveOrder}
             />
           }>
           </Route>
           <Route path='/orders/*' element={
-            <OrderDetails/>
+            <OrderDetails />
           }>
 
           </Route>
