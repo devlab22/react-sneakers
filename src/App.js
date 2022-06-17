@@ -164,8 +164,8 @@ function App() {
     }
 
     if (MyMeraki === null){
-      MyMeraki = new MyDashboard('9c990e550487dcfdcfe02e65b40f77035bd45d86');
-      MyMeraki.getOrganizations(); 
+      MyMeraki = new MyDashboard('6bec40cf957de430a6f1f2baa056b99a4fac9ea0');
+      MyMeraki.getNetwork('L_566327653141846927'); 
     }
 
   }
