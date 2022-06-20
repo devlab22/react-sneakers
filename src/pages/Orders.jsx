@@ -1,8 +1,10 @@
 import Info from '../components/Info';
 import Order from '../components/Order';
+import React from 'react';
 
 function Orders({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, onAdd2Favorite, onRemoveOrder }) {
-   
+  
+
   return (
     <div className="content">
       <div className="d-flex align-center justify-between">

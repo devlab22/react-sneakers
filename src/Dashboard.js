@@ -46,6 +46,13 @@ class MyDashboard {
         return await this.getData(url);
     }
 
+    async getCountries(){
+
+        const {data} = await axios.get("https://restcountries.com/v2/all");
+        //console.log(data)
+        return data;
+    }
+
 }
 
 export default MyDashboard;

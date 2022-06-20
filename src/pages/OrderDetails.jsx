@@ -8,30 +8,25 @@ function OrderDetails() {
 
     const arr = window.location.pathname.split('/');
     let orderId = arr[arr.length -1];
-    //console.log('state', state)
     const order = state.orderItems.filter(item => Number(item.key) === Number(orderId));
-    /* if (state['items'].length === 0){
-        state.fetchData();
-    } */
-    //console.log(order);
     const line = order[0];
     let items = [];
     if ('items' in line){
         items = line['items'];
     }
-   /*  if (order[0].items.length > 0){
-        items = order[0]['items'];
-    }  */
 
     return (
         <div className="content">
-            <div className="d-flex align-center justify-between">
-                <h1>Order #{orderId}</h1>
-                <Link to='/orders'>
+            <div className="d-flex align-center">
+                <h1 className="mb-5">Order #{orderId}</h1>
+            
+               {/*  <Link to='/orders'>
                   <button className="greenButton">Return</button>
-                </Link>
+                </Link> */}
                
             </div>
+
+            <h2 className="mt-5">Date: {line['dateTime']}</h2>
 
             <div className="d-flex flex-wrap">
                 {items
@@ -40,6 +35,7 @@ function OrderDetails() {
                             key={item.id}
                             added={state.isItemInCart(item && item.id)}
                             favorite={state.isItemInCart(item && item.id)}
+                            onClickPlus={state.onAdd2Cart}
                             {...item}
                         />
                     ))}

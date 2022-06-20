@@ -4,18 +4,19 @@ import React, { useState, useEffect } from 'react';
 import { formateCurrency } from '../formatter';
 import Info from '../Info';
 import AppContext from '../../context';
+import {useCart} from '../hooks/useCartItems';
 
 function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy }) {
 
     const [isCompleted, setIsCompleted] = useState(false);
-    const { orderId } = React.useContext(AppContext);
+    const { orderId, cartItems } = React.useContext(AppContext);
 
+    const { totalPrice } = useCart();
     const tax = 19;
     const [amount, setAmount] = useState(0)
-    let price = 0;
-    items.forEach(item => {
-        price += parseFloat(item.price);
-    });
+
+    //const price = cartItems.reduce((sum, obj) => parseFloat(obj.price) + sum, 0);
+    const price = totalPrice;
 
     useEffect(() => {
         const p = formateCurrency({price:price, displayCode:false});
@@ -29,7 +30,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy }) {
     };
 
     const handleOnBuy = () => {
-       onBuy(items);
+       onBuy(cartItems);
        setIsCompleted(true)
     };
 

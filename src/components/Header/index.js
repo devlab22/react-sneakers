@@ -1,19 +1,15 @@
 import styles from './Header.module.scss';
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { formateCurrency } from '../formatter'
+import {useCart} from '../hooks/useCartItems';
 
 function Header({ onClickCart, items = [], favorites= [] }) {
   const [amount, setAmount] = useState(0)
-  let price = 0;
-  items.forEach(item => {
-    price += parseFloat(item.price);
-  });
+  const { formatedPrice } = useCart();
 
   useEffect(() => {
-    const p = formateCurrency({ price: price, displayCode: true });
-    setAmount(p);
-  }, [price]);
+    setAmount(formatedPrice);
+  }, [formatedPrice]);
 
   return (
     <header className={styles.mainHeader}>

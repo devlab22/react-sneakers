@@ -10,6 +10,7 @@ import AppContext from './context'
 import CiscoISE from './Api';
 import OrderDetails from './pages/OrderDetails';
 import MyDashboard from './Dashboard'
+import {formateDate} from './components/formatter';
 
 /* const data = [
   {id:1, title: 'Nike Blazer Mid Suede', price: '120', unit: "€", imageUrl: '/img/sneakers/1.jpg' },
@@ -48,7 +49,7 @@ function App() {
       setIsLoading(true);
 
       try {
-        const [itemsResponse, cartResponse, favoriteResponse, ordersResponse] = await Promise.all([
+        const [itemsResponse, cartResponse, favoriteResponse, orderItemsResponse] = await Promise.all([
           axios.get('https://62a04d7a202ceef7086a2584.mockapi.io/items'),
           axios.get('https://62a04d7a202ceef7086a2584.mockapi.io/cart'),
           axios.get('https://62a04d7a202ceef7086a2584.mockapi.io/favorite'),
@@ -58,7 +59,7 @@ function App() {
         setItems(itemsResponse.data);
         setCartItems(cartResponse.data);
         setFavoriteItems(favoriteResponse.data);
-        setOrderItems(ordersResponse.data);
+        setOrderItems(orderItemsResponse.data);
         onLogin('iseadmin', '12345', '173.21.1');
 
       } catch (error) {
@@ -140,9 +141,11 @@ function App() {
 
   const onBuy = async (items = []) => {
 
+    const date = formateDate( new Date());
+
     try {
-      const { data } = await axios.post(`https://62a04d7a202ceef7086a2584.mockapi.io/orders/`, { items: items });
-      console.log(data)
+      const { data } = await axios.post(`https://62a04d7a202ceef7086a2584.mockapi.io/orders/`, { dateTime: date, items: items });
+      //console.log(data)
       setOrderId(data.key)
       setOrderItems(prev => [...prev, data]);
 
@@ -156,7 +159,7 @@ function App() {
 
   };
 
-  const onLogin = (login, password, ipAddress) => {
+  const onLogin = async (login, password, ipAddress) => {
 
     if (MyCiscoIse === null) {
       MyCiscoIse = new CiscoISE(login, password, ipAddress);
@@ -165,7 +168,8 @@ function App() {
 
     if (MyMeraki === null){
       MyMeraki = new MyDashboard('6bec40cf957de430a6f1f2baa056b99a4fac9ea0');
-      MyMeraki.getNetwork('L_566327653141846927'); 
+      //MyMeraki.getNetwork('L_566327653141846927'); 
+      MyMeraki.getCountries();
     }
 
   }
@@ -196,7 +200,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{
-      items, cartItems, favoriteItems, orderItems, setOrderId, isItemInCart,
+      items, cartItems, favoriteItems, orderItems,  setOrderId, isItemInCart,
       isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite
     }}>
       <div className='wrapper clear'>

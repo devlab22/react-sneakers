@@ -17,8 +17,8 @@ function Card({ id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, 
     }, [added, favorite]); */
 
     const handlePlus = () => {
-        //onClickPlus({ id, title, price, unit, imageUrl }, !state.isItemInCart(id));
-        state.onAdd2Cart({ id, title, price, unit, imageUrl }, !state.isItemInCart(id));
+        onClickPlus({ id, title, price, unit, imageUrl }, !state.isItemInCart(id));
+        //state.onAdd2Cart({ id, title, price, unit, imageUrl }, !state.isItemInCart(id));
         //setIsAdded(!isAdded);
     };
 
@@ -43,7 +43,7 @@ function Card({ id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, 
                     <p>Price:</p>
                     <b>{p}</b>
                 </div>
-                <img className={styles.plus} onClick={handlePlus} src={state.isItemInCart(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} alt="Plus" />
+                {onClickPlus && <img className={styles.plus} onClick={handlePlus} src={state.isItemInCart(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} alt="Plus" />}
             </div>
 
         </div> 
