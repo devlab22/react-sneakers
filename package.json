@@ -2,6 +2,7 @@
   "name": "react-sneakers",
   "version": "0.1.0",
   "homepage": ".",
+  "proxy": "https://api.meraki.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -42,6 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://api.meraki.com"
+  }
 }

@@ -17,16 +17,16 @@ function OrderDetails() {
 
     return (
         <div className="content">
-            <div className="d-flex align-center">
+            <div className="d-flex align-center justify-between">
                 <h1 className="mb-5">Order #{orderId}</h1>
-            
-               {/*  <Link to='/orders'>
+                <h2 className="mt-5">Date: {line['dateTime']}</h2>
+                <Link to='/orders'>
                   <button className="greenButton">Return</button>
-                </Link> */}
+                </Link>
                
             </div>
 
-            <h2 className="mt-5">Date: {line['dateTime']}</h2>
+
 
             <div className="d-flex flex-wrap">
                 {items

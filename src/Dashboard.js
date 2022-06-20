@@ -4,7 +4,8 @@ import axios from "axios";
 class MyDashboard {
     constructor(session) {
         this.session = session;
-        
+        this.session = "9c990e550487dcfdcfe02e65b40f77035bd45d86";
+
     }
 
     getHeaders() {
@@ -21,16 +22,19 @@ class MyDashboard {
 
     }
 
-    async getData(url){
+    async getData(url) {
 
         const options = {
             headers: this.getHeaders(),
             method: 'GET',
             body: null,
-            url: url
+            url: url,
+            mode: "no-cors",
+            crossdomain: true,
+            proxy: "https://api.meraki.com"
         }
 
-        const {data} = await axios(options['url'], options);
+        const { data } = await axios(options['url'], options);
         console.log(data);
         return data;
     }
@@ -40,15 +44,15 @@ class MyDashboard {
         return await this.getData(url);
     }
 
-    async getNetwork(networkId){
+    async getNetwork(networkId) {
 
         const url = `https://api.meraki.com/api/v1/networks/${networkId}`;
         return await this.getData(url);
     }
 
-    async getCountries(){
+    async getCountries() {
 
-        const {data} = await axios.get("https://restcountries.com/v2/all");
+        const { data } = await axios.get("https://restcountries.com/v2/all");
         //console.log(data)
         return data;
     }
