@@ -13,11 +13,11 @@ function Header({ onClickCart, items = [], favorites= [] }) {
 
   return (
     <header className={styles.mainHeader}>
-      <Link to="/">
+      <Link to="react-sneakers/">
         <div className="d-flex align-center">
           <img width={40} height={40} src="img/logo.png" alt="logo" />
           <div>
-            <h3 className="text-uppercase">React Sneakers</h3>
+            <h3 className="text-uppercase">React Sneakers v2</h3>
             <p className="opacity-5">Sneakers Shop</p>
           </div>
         </div>
@@ -28,11 +28,11 @@ function Header({ onClickCart, items = [], favorites= [] }) {
           <span>{amount}</span>
         </li>
         <li className='cu-p mr-20'>
-          <Link to="/favorites">
+          <Link to="react-sneakers/favorites">
             <img height={24} width={24} src={ favorites.length > 0 ? "img/heart.svg" : "img/heart.svg"} alt="heart" />
           </Link>
         </li>
-        <Link to='/orders'>
+        <Link to='react-sneakers/orders'>
           <li>
             <img width={18} height={18} src="img/user.svg" alt="user" />
           </li>

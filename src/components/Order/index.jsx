@@ -12,7 +12,7 @@ function Order({ orderId, items = [], dateTime, onRemoveOrder }) {
     return (
         <div>
             <div className={styles.card} >
-                <Link to={`/orders/${orderId}`}>
+                <Link to={`${orderId}`}>
                     <img height={60} width={60} src='img/complete-order.jpg' alt='complete order'></img>
                     <h5>Order # {orderId}</h5>
                     <h5>Date: {date}</h5>

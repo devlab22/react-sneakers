@@ -215,7 +215,7 @@ function App() {
         <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} />
 
         <Routes>
-          <Route path="react-sneakers" exact element={
+          <Route path="react-sneakers/" exact element={
             <Home
               items={items}
               cartItems={cartItems}
