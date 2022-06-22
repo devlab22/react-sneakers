@@ -215,7 +215,7 @@ function App() {
         <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} />
 
         <Routes>
-          <Route path="/" exact element={
+          <Route path="react-sneakers" exact element={
             <Home
               items={items}
               cartItems={cartItems}
@@ -225,7 +225,7 @@ function App() {
               isLoading={isLoading}
             />}>
           </Route>
-          <Route path="/favorites" exact element={
+          <Route path="react-sneakers/favorites" exact element={
             <Favorite
               cartItems={cartItems}
               favoriteItems={favoriteItems}
@@ -233,7 +233,7 @@ function App() {
               onAdd2Favorite={onAdd2Favorite}
             />}>
           </Route>
-          <Route path='/orders' exact element={
+          <Route path='react-sneakers/orders' exact element={
             <Orders
               items={orderItems}
               cartItems={cartItems}
@@ -244,7 +244,7 @@ function App() {
             />
           }>
           </Route>
-          <Route path='/orders/*' element={
+          <Route path='react-sneakers/orders/*' element={
             <OrderDetails />
           }>
 
