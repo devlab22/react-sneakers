@@ -6,7 +6,7 @@ import Info from '../Info';
 import AppContext from '../../context';
 import {useCart} from '../hooks/useCartItems';
 
-function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy }) {
+function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy, opened=false }) {
 
     const [isCompleted, setIsCompleted] = useState(false);
     const { orderId, cartItems } = React.useContext(AppContext);
@@ -35,7 +35,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy }) {
     };
 
     return (
-        <div className={styles.overlay}>
+        <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
             <div className={styles.drawer}>
                 <h2 className="d-flex justify-between align-center mb-30">Shopping cart
                     <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" onClick={onCloseCart} />

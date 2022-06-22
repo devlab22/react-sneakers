@@ -31,7 +31,7 @@ let MyCiscoIse = null;
 let MyMeraki = null;
 
 function App() {
-  // https://restcountries.com/v2/all
+  
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [favoriteItems, setFavoriteItems] = useState([]);
@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
 
     async function fetchData() {
-      // console.log('fetch data')
+      
       setIsLoading(true);
 
       try {
@@ -163,14 +163,20 @@ function App() {
 
     if (MyCiscoIse === null) {
       MyCiscoIse = new CiscoISE(login, password, ipAddress);
-      //console.log(MyCiscoIse.getHeader());
+      
     }
 
-    if (MyMeraki === null){
-      MyMeraki = new MyDashboard('9c990e550487dcfdcfe02e65b40f77035bd45d86');
-      MyMeraki.getOrganizations(); 
-      MyMeraki.getCountries();
-    }
+   /*  if (MyMeraki === null){
+      let apiKey = '9c990e550487dcfdcfe02e65b40f77035bd45d86';
+      apiKey = '6bec40cf957de430a6f1f2baa056b99a4fac9ea0';
+      MyMeraki = new MyDashboard(apiKey);
+      const orgs = await MyMeraki.getOrganizations();
+      console.log('organizations', orgs);
+      const org = orgs[6];
+      console.log('organization', org);
+      const networks = await MyMeraki.getNetworks(org['id']);
+      console.log('networks', networks);
+    } */
 
   }
 
@@ -205,7 +211,7 @@ function App() {
     }}>
       <div className='wrapper clear'>
 
-        {cartOpened && <CartShop items={cartItems} onCloseCart={onCloseCart} onRemoveItem={onRemoveItem} onBuy={onBuy} />}
+        <CartShop items={cartItems} onCloseCart={onCloseCart} onRemoveItem={onRemoveItem} onBuy={onBuy} opened={cartOpened}/>
         <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} />
 
         <Routes>

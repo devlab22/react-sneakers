@@ -1,11 +1,15 @@
 .card {
     border: 1px solid #f3f3f3;
     padding: 1rem;
-    width: 150px;
+    width: 200px;
     border-radius: 40px;
     margin: 0 1rem 1rem 0;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
     overflow: auto;
+
+    img{
+      margin-left: 50px;
+    }
     
     .plus{
       cursor: pointer;
@@ -39,10 +43,11 @@
   
     p {
       margin: 0 0 0.5rem 0;
-      opacity: 0.5;
+      opacity: 1;
     }
 
     .greenButton {
+      margin-left: 30px;
       width: 80px;
       height: 25px;
       background: #9dd558;

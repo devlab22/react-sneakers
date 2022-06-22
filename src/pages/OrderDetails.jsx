@@ -18,8 +18,8 @@ function OrderDetails() {
     return (
         <div className="content">
             <div className="d-flex align-center justify-between">
-                <h1 className="mb-5">Order #{orderId}</h1>
-                <h2 className="mt-5">Date: {line['dateTime']}</h2>
+                <h1 className="mt-30">Order #{orderId}</h1>
+                <h1 className="mt-30">Date: {line['dateTime']}</h1>
                 <Link to='/orders'>
                   <button className="greenButton">Return</button>
                 </Link>
