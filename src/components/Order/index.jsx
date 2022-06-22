@@ -13,14 +13,14 @@ function Order({ orderId, items = [], dateTime, onRemoveOrder }) {
         <div>
             <div className={styles.card} >
                 <Link to={`/orders/${orderId}`}>
-                    <img height={60} width={50} src='/img/complete-order.jpg' alt='complete order'></img>
-                    <h5>Order # <b>{orderId}</b></h5>
-                    <h5>Date: <b>{date}</b></h5>
-                    <h5>Time: <b>{time}</b></h5>
-                    <h5>Products: <b>{items.length}</b></h5>
+                    <img height={60} width={60} src='/img/complete-order.jpg' alt='complete order'></img>
+                    <h5>Order # {orderId}</h5>
+                    <h5>Date: {date}</h5>
+                    <h5>Time: {time}</h5>
+                    <h5>Products: {items.length}</h5>
                     <div className="d-flex justify-between align-center">
                         <div className="d-flex flex-column">
-                            <p>Price: <b>{p}</b></p>                          
+                            <p>Price: {p}</p>                          
                         </div>
 
                     </div>
