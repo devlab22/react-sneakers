@@ -166,7 +166,7 @@ function App() {
       
     }
 
-   /*  if (MyMeraki === null){
+/*     if (MyMeraki === null){
       let apiKey = '9c990e550487dcfdcfe02e65b40f77035bd45d86';
       apiKey = '6bec40cf957de430a6f1f2baa056b99a4fac9ea0';
       MyMeraki = new MyDashboard(apiKey);
@@ -215,7 +215,7 @@ function App() {
         <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} />
 
         <Routes>
-          <Route path="react-sneakers/" exact element={
+          <Route path="/" exact element={
             <Home
               items={items}
               cartItems={cartItems}
@@ -225,7 +225,7 @@ function App() {
               isLoading={isLoading}
             />}>
           </Route>
-          <Route path="react-sneakers/favorites" exact element={
+          <Route path="/favorites" exact element={
             <Favorite
               cartItems={cartItems}
               favoriteItems={favoriteItems}
@@ -233,7 +233,7 @@ function App() {
               onAdd2Favorite={onAdd2Favorite}
             />}>
           </Route>
-          <Route path='react-sneakers/orders' exact element={
+          <Route path='/orders' exact element={
             <Orders
               items={orderItems}
               cartItems={cartItems}
@@ -244,7 +244,7 @@ function App() {
             />
           }>
           </Route>
-          <Route path='react-sneakers/orders/*' element={
+          <Route path='/orders/*' element={
             <OrderDetails />
           }>
 

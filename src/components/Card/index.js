@@ -8,7 +8,6 @@ function Card({ id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, 
     //const [isAdded, setIsAdded] = useState(added);
     //const [isFavorite, setFavorite] = useState(favorite);
     const state = useContext(AppContext);
-
     const p = formateCurrency({ price: price, currency: unit, displayCode: true });
 
    /*  useEffect(() => {
