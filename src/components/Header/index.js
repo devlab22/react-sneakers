@@ -17,7 +17,7 @@ function Header({ onClickCart, items = [], favorites= [] }) {
         <div className="d-flex align-center">
           <img width={40} height={40} src="/img/logo.png" alt="logo" />
           <div>
-            <h3 className="text-uppercase">React Sneakers v2</h3>
+            <h3 className="text-uppercase">React Sneakers</h3>
             <p className="opacity-5">Sneakers Shop</p>
           </div>
         </div>

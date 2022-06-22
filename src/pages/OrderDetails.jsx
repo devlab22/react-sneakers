@@ -20,7 +20,7 @@ function OrderDetails() {
             <div className="d-flex align-center justify-between">
                 <h1 className="mt-30">Order #{orderId}</h1>
                 <h1 className="mt-30">Date: {line['dateTime']}</h1>
-                <Link to='react-sneakers/orders/'>
+                <Link to='/orders/'>
                   <button className="greenButton">Return</button>
                 </Link>
                

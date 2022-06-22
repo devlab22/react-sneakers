@@ -33,7 +33,7 @@ function Card({ id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, 
         <div className={styles.card}>
 
             <div className={styles.favorite}>
-                <img src={state.isItemInFavorite(id) ? "img/liked.svg" : "img/unliked.svg"} alt="unliked" onClick={handleFavorite} />
+                <img src={state.isItemInFavorite(id) ? "/img/liked.svg" : "/img/unliked.svg"} alt="unliked" onClick={handleFavorite} />
             </div>
             <img width="90%" height="auto" src={imageUrl} alt="Sneakers" />
             <h5>{title}</h5>
@@ -42,7 +42,7 @@ function Card({ id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, 
                     <p>Price:</p>
                     <b>{p}</b>
                 </div>
-                {onClickPlus && <img className={styles.plus} onClick={handlePlus} src={state.isItemInCart(id) ? "img/btn-checked.svg" : "img/btn-plus.svg"} alt="Plus" />}
+                {onClickPlus && <img className={styles.plus} onClick={handlePlus} src={state.isItemInCart(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} alt="Plus" />}
             </div>
 
         </div> 
