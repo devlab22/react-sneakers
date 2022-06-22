@@ -26,7 +26,7 @@ function Orders({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, on
         </div>
       ) : (
         <Info
-          imgUrl="/img/empty-cart.jpg"
+          imgUrl="img/empty-cart.jpg"
           title="No Orders"
           showBtn={false}
         />

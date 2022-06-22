@@ -38,7 +38,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy, opened=false }
         <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
             <div className={styles.drawer}>
                 <h2 className="d-flex justify-between align-center mb-30">Shopping cart
-                    <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" onClick={onCloseCart} />
+                    <img className={styles.removeBtn} src="img/btn-remove.svg" alt="Remove" onClick={onCloseCart} />
                 </h2>
 
                 { 
@@ -75,7 +75,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy, opened=false }
                                     </li>
                                 </ul>
                                 <button disabled={isCompleted} className={styles.greenButton} onClick={handleOnBuy}>Buy
-                                    <img src="/img/arrow.svg" alt="Arrow" />
+                                    <img src="img/arrow.svg" alt="Arrow" />
                                 </button>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ function CartShop({ onCloseCart, onRemoveItem, items = [], onBuy, opened=false }
                     ) : (
 
                          <Info 
-                            imgUrl={isCompleted ? "/img/complete-order.jpg" : "/img/empty-cart.jpg" }
+                            imgUrl={isCompleted ? "img/complete-order.jpg" : "img/empty-cart.jpg" }
                             title={isCompleted ? `Order #${orderId} created` : "Empty Cart"}
                             description="Thank you"
                             onClose={onCloseCart}

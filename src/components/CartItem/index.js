@@ -18,7 +18,7 @@ function CartItem(props){
             <p className="mb-5">{props.title}</p>
             <b>{p}</b>
         </div>
-        <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" onClick={onRemoveItem}/>
+        <img className={styles.removeBtn} src="img/btn-remove.svg" alt="Remove" onClick={onRemoveItem}/>
     </div>
     )
 }

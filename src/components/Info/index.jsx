@@ -10,7 +10,7 @@ function Info({imgUrl, title, description, showBtn=true, onClose}) {
            
            {showBtn && 
             <button className={styles.greenButton} onClick={onClose}>
-                <img src="/img/arrow.svg" alt="Arrow"></img>
+                <img src="img/arrow.svg" alt="Arrow"></img>
                 Return
             </button>
           }

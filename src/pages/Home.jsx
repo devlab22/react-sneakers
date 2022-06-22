@@ -29,9 +29,9 @@ function Home({ items = [], cartItems = [], favoriteItems = [], onAdd2Cart, onAd
       <div className="d-flex align-center justify-between">
         <h1>{searchValue ? `Search: "${searchValue}"` : "All sneakers"}</h1>
         <div className="search-block d-flex">
-          <img src="/img/search.svg" alt="Search" />
+          <img src="img/search.svg" alt="Search" />
           <input placeholder="Search..." value={searchValue} onChange={onChangeSearchInput}></input>
-          {searchValue && <img className='clear cu-p' src='/img/btn-remove.svg' alt='remove' onClick={() => setSearchValue('')} />}
+          {searchValue && <img className='clear cu-p' src='img/btn-remove.svg' alt='remove' onClick={() => setSearchValue('')} />}
         </div>
       </div>
 

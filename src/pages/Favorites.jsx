@@ -30,7 +30,7 @@ function Favorite({ cartItems = [], favoriteItems = [], onAdd2Cart, onAdd2Favori
           </div>
         ) : (
           <Info
-            imgUrl="/img/empty-cart.jpg"
+            imgUrl="img/empty-cart.jpg"
             title="Empty Favorite"
             description="Add a sneaker"
             showBtn={false}
