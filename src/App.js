@@ -11,6 +11,7 @@ import CiscoISE from './Api';
 import OrderDetails from './pages/OrderDetails';
 import MyDashboard from './Dashboard'
 import {formateDate} from './components/formatter';
+import {Circles} from 'react-loader-spinner';
 
 /* const data = [
   {id:1, title: 'Nike Blazer Mid Suede', price: '120', unit: "€", imageUrl: 'img/sneakers/1.jpg' },
@@ -204,6 +205,17 @@ function App() {
     }
   };
 
+  if (isLoading){
+    return(
+      <div className='loading-container'>
+      <Circles color="#00BFFF" height={80} width={80}/>
+    </div>
+    
+    )
+    
+  }
+  else{
+
   return (
     <AppContext.Provider value={{
       items, cartItems, favoriteItems, orderItems,  setOrderId, isItemInCart,
@@ -254,6 +266,7 @@ function App() {
       </div>
     </AppContext.Provider>
   )
+}
 }
 
 export default App;
