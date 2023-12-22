@@ -2,12 +2,19 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-PORT = 9000;
+const fs = require('fs')
+
+const rawdata = fs.readFileSync('config.json');
+const config = JSON.parse(rawdata);
+
+const PORT = config.PORT || 8000
+
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/*', function (req, res) {
-  console.log(`server on port ${PORT}`)
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(PORT);
+app.listen(PORT, () => {
+ console.log(`server on port ${PORT}`)
+});
