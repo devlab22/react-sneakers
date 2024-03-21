@@ -33,7 +33,6 @@ function App() {
   const [cartOpened, setCartOpened] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [orderId, setOrderId] = useState('');
-  const [token, setToken] = useState(0)
 
   //const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -154,12 +153,6 @@ function App() {
 
   };
 
-  const onLogin = async (login, password, ipAddress) => {
-
-   
-
-  }
-
   const isItemInCart = (id) => {
     return cartItems.find(item => Number(item.id) === Number(id));
   };
@@ -185,7 +178,7 @@ function App() {
   };
 
   const createToken = () => {
-    setToken(1)
+    
   }
 
   if (isLoading){
@@ -202,7 +195,7 @@ function App() {
   return (
     <AppContext.Provider value={{
       items, cartItems, favoriteItems, orderItems,  setOrderId, isItemInCart,
-      isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite, token
+      isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite
     }}>
       <div className='wrapper clear'>
 
