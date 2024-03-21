@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import styles from './Card.module.scss';
 import { formateCurrency } from '../formatter';
 import LoadingCard from '../LoadingCard';
@@ -7,10 +7,10 @@ import AppContext from '../../context';
 function Card({ id, title, onClickFavorite, imageUrl, price, unit, onClickPlus, added = false, favorite = false, isLoading=false }) {
     //const [isAdded, setIsAdded] = useState(added);
     //const [isFavorite, setFavorite] = useState(favorite);
-    const state = useContext(AppContext);
+    const state = React.useContext(AppContext);
     const p = formateCurrency({ price: price, currency: unit, displayCode: true });
 
-   /*  useEffect(() => {
+   /*  React.useEffect(() => {
         setIsAdded(added);
         setFavorite(favorite);
     }, [added, favorite]); */

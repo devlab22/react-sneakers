@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import {useCart} from '../hooks/useCartItems';
 
-function Header({ onClickCart, items = [], favorites= [] }) {
+function Header({ onClickCart, items = [], favorites= [], onSetToken=Function.prototype }) {
   const [amount, setAmount] = useState(0)
   const { formatedPrice } = useCart();
 
@@ -37,6 +37,12 @@ function Header({ onClickCart, items = [], favorites= [] }) {
             <img width={18} height={18} src="/img/user.svg" alt="user" />
           </li>
         </Link>
+        <button
+          onClick={onSetToken}
+          className='greenButton'
+        >
+          create token
+        </button>
 
       </ul>
     </header>

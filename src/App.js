@@ -7,9 +7,7 @@ import Home from './pages/Home';
 import Favorite from './pages/Favorites';
 import Orders from './pages/Orders';
 import AppContext from './context'
-import CiscoISE from './Api';
 import OrderDetails from './pages/OrderDetails';
-import MyDashboard from './Dashboard'
 import {formateDate} from './components/formatter';
 import {Circles} from 'react-loader-spinner';
 
@@ -25,11 +23,6 @@ import {Circles} from 'react-loader-spinner';
   {id:9, title: 'Nike Air Max 70', price: '35', unit: "€", imageUrl: 'img/sneakers/9.jpg' },
   {id:10, title: 'Puma X Aka', price: '53', unit: "€", imageUrl: 'img/sneakers/10.jpg' }
 ] */
-// Context
-
-//export const AppContext = React.createContext({});
-let MyCiscoIse = null;
-let MyMeraki = null;
 
 function App() {
   
@@ -40,6 +33,7 @@ function App() {
   const [cartOpened, setCartOpened] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [orderId, setOrderId] = useState('');
+  const [token, setToken] = useState(0)
 
   //const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -61,7 +55,7 @@ function App() {
         setCartItems(cartResponse.data);
         setFavoriteItems(favoriteResponse.data);
         setOrderItems(orderItemsResponse.data);
-        onLogin('iseadmin', '12345', '173.21.1');
+       // onLogin('iseadmin', '12345', '173.21.1');
 
       } catch (error) {
         console.log('error by response');
@@ -162,22 +156,7 @@ function App() {
 
   const onLogin = async (login, password, ipAddress) => {
 
-    if (MyCiscoIse === null) {
-      MyCiscoIse = new CiscoISE(login, password, ipAddress);
-      
-    }
-
-/*     if (MyMeraki === null){
-      let apiKey = '9c990e550487dcfdcfe02e65b40f77035bd45d86';
-      apiKey = '6bec40cf957de430a6f1f2baa056b99a4fac9ea0';
-      MyMeraki = new MyDashboard(apiKey);
-      const orgs = await MyMeraki.getOrganizations();
-      console.log('organizations', orgs);
-      const org = orgs[6];
-      console.log('organization', org);
-      const networks = await MyMeraki.getNetworks(org['id']);
-      console.log('networks', networks);
-    } */
+   
 
   }
 
@@ -205,6 +184,10 @@ function App() {
     }
   };
 
+  const createToken = () => {
+    setToken(1)
+  }
+
   if (isLoading){
     return(
       <div className='loading-container'>
@@ -219,12 +202,12 @@ function App() {
   return (
     <AppContext.Provider value={{
       items, cartItems, favoriteItems, orderItems,  setOrderId, isItemInCart,
-      isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite
+      isItemInFavorite, setCartOpened, orderId, onAdd2Cart, onAdd2Favorite, token
     }}>
       <div className='wrapper clear'>
 
         <CartShop items={cartItems} onCloseCart={onCloseCart} onRemoveItem={onRemoveItem} onBuy={onBuy} opened={cartOpened}/>
-        <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} />
+        <Header onClickCart={() => setCartOpened(true)} items={cartItems} favorites={favoriteItems} onSetToken={createToken} />
 
         <Routes>
           <Route path="/" exact element={
